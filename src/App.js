@@ -1,26 +1,70 @@
-import React from 'react';
-import logo from './logo.svg';
+import React from "react";
+import { Router, Route, Switch, Redirect } from "react-router-dom";
+import { createBrowserHistory } from "history";
+
+// Ant design
+import './styles/index.css'
+
+// Redux
+import { Provider } from "react-redux";
+import store from './store';
+
+// Layouts & Route
+import routes from "./routes";
+import PublicLayout from "./components/layout/Public";
+import DashboardLayout from "./components/layout/Dashboard";
+
+// Public pages
+import Login from "./pages/LoginPage";
+
+// Protected pages
+import DashboardPage from "./pages/DashboardPage";
+import NotFoundPage from "./pages/NotFoundPage";
+
+const pages = [
+  {
+    exact: true,
+    path: routes.login,
+    component: Login,
+    layout: PublicLayout
+  },
+  {
+    exact: false,
+    path: routes.dashboard,
+    component: DashboardPage,
+    layout: DashboardLayout
+  }
+];
 
 
-function App() {
+const App = () => {
+  const history = createBrowserHistory();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router history={history}>
+      <Provider store={store}>
+        <Switch>
+        {pages.map(
+          ({ exact, path, component: Component, layout: Layout }, index) => {
+            return (
+              <Route
+              key={index}
+              exact={exact}
+              path={path}
+              render={props => (
+                <Layout history={props.history}>
+                  <Component {...props} />
+                </Layout>
+              )}
+            />
+            )
+          }
+        )}
+        <Redirect to={routes.dashboard} />
+        <Route component={NotFoundPage} />
+      </Switch>
+      </Provider>
+    </Router>
   );
-}
+};
 
 export default App;
