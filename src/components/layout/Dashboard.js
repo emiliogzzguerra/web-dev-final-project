@@ -4,6 +4,8 @@ import { AreaChartOutlined, LogoutOutlined, SettingOutlined, TeamOutlined, Block
 import styled from '@emotion/styled'
 
 import routes from "../../routes";
+import LanguageSwitch from "../LanguageSwitch";
+import { withTranslation } from 'react-i18next';
 const { Content } = Layout;
 
 const StyledMenu = styled(Menu)`
@@ -32,29 +34,6 @@ const StyledContent = styled(Content)`
   padding: 50px;
 `;
 
-const DashboardViews = [
-  {
-    name: "Dashboard",
-    icon: <AreaChartOutlined />,
-    route: routes.dashboard,
-  },
-  {
-    name: "Users",
-    icon: <TeamOutlined />,
-    route: routes.users,
-  },
-  {
-    name: "Areas",
-    icon: <BlockOutlined />,
-    route: routes.areas,
-  },
-  {
-    name: "Settings",
-    icon: <SettingOutlined />,
-    route: routes.settings,
-  },
-]
-
 class DashboardLayout extends Component {
   componentDidMount() {
     if (!localStorage.getItem("token")) {
@@ -76,20 +55,46 @@ class DashboardLayout extends Component {
   };
 
   render() {
+    const DashboardViews = [
+      {
+        key: "dash-menu-dashboard",
+        name: this.props.t('dashboard'),
+        icon: <AreaChartOutlined />,
+        route: routes.dashboard,
+      },
+      {
+        key: "dash-menu-users",
+        name: this.props.t('users'),
+        icon: <TeamOutlined />,
+        route: routes.users,
+      },
+      {
+        key: "dash-menu-areas",
+        name: this.props.t('areas'),
+        icon: <BlockOutlined />,
+        route: routes.areas,
+      },
+      {
+        key: "dash-menu-settings",
+        name: this.props.t('settings'),
+        icon: <SettingOutlined />,
+        route: routes.settings,
+      },
+    ]
     return (
       <StyledLayout>
         <StyledMenu
           onClick={this.handleClick}
-          defaultSelectedKeys={['Dashboard']}
-          defaultOpenKeys={['sub1']}
+          defaultSelectedKeys={["dash-menu-dashboard"]}
           mode="inline"
         >
           {DashboardViews.map(view => (
-            <Menu.Item key={view.name} onClick={() => this.goTo(view.route)} icon={view.icon}>{view.name}</Menu.Item>
+            <Menu.Item key={view.key} onClick={() => this.goTo(view.route)} icon={view.icon}>{view.name}</Menu.Item>
           ))}
-          <Menu.Item key="Logout" onClick={() => this.onLogout()} icon={<LogoutOutlined />}>Logout</Menu.Item>
+          <Menu.Item key="dash-menu-logout" onClick={() => this.onLogout()} icon={<LogoutOutlined />}>{this.props.t('logout')}</Menu.Item>
         </StyledMenu>
         <StyledContent>
+          <LanguageSwitch />
           {this.props.children}
         </StyledContent>
       </StyledLayout>
@@ -97,4 +102,4 @@ class DashboardLayout extends Component {
   }
 }
 
-export default DashboardLayout;
+export default withTranslation('dashboard')(DashboardLayout);
