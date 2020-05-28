@@ -6,11 +6,10 @@ import routes from "../../routes"
 
 import MainView from "./MainView"
 import SettingsView from "./SettingsView"
-import StatisticsView from "./StatisticsView"
-import AreasView from "./AreasView"
-import UsersView from "./UsersView"
-import AreaView from "./AreaView"
-import UserView from "./UserView"
+import AreasView from "./Area/AreasView"
+import AreaView from "./Area/AreaView"
+import UsersView from "./User/UsersView"
+import UserView from "./User/UserView"
 
 const DashboardPage = () => {
   const user = { name: "Hello world" }
@@ -22,12 +21,6 @@ const DashboardPage = () => {
       <RouteWithProps exact path={routes.user} component={UserView} />
       <RouteWithProps exact path={routes.users} component={UsersView} />
       <RouteWithProps exact path={routes.settings} component={SettingsView} />
-      <RouteWithProps
-        exact
-        path={routes.statistics}
-        extraProps={{ loggedInUser: user }}
-        component={StatisticsView}
-      />
     </Switch>
   )
 }

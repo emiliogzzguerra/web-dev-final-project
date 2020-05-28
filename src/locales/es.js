@@ -8,5 +8,8 @@ export default {
     main: {
       title: "Título de ejemplo",
     },
+    user: {
+      boton_crear: "Crear usuario",
+    },
   },
 }

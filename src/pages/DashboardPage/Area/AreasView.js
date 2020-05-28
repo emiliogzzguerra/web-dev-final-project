@@ -1,7 +1,7 @@
 import React from "react"
 import { Button } from "antd"
-import routes from "../../routes"
-import { getPathWithParam } from "../../utils"
+import routes from "../../../routes"
+import { getPathWithParam } from "../../../utils"
 
 const AreasView = (props) => {
   const goToArea = () => {

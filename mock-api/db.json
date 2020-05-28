@@ -4,6 +4,7 @@
             "user_id": 0,
             "full_name": "Emilio",
             "user_name": "emilio",
+            "password": "12345",
             "user_type": 2,
             "color": "#FFFFFF"
         },
@@ -11,6 +12,7 @@
             "user_id": 1,
             "full_name": "Aglahir",
             "user_name": "aglahir",
+            "password": "12345",
             "user_type": 2,
             "color": "#FFFFFF"
         },
@@ -18,6 +20,7 @@
             "user_id": 2,
             "full_name": "Hermano de emilio",
             "user_name": "hermanodeemilio",
+            "password": "12345",
             "user_type": 1,
             "color": "#FFFFFF"
         },         
@@ -25,6 +28,7 @@
             "user_id": 3,
             "full_name": "Hermano de aglahir",
             "user_name": "hermanodeaglahir",
+            "password": "12345",
             "user_type": 1,
             "color": "#FFFFFF"
         },
@@ -32,6 +36,7 @@
             "user_id": 4,
             "full_name": "SuperAdmin",
             "user_name": "superadmin",
+            "password": "12345",
             "user_type": 4,
             "color": "#FFFFFF"
         }
