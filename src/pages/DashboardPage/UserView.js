@@ -1,10 +1,10 @@
-import React from "react";
-import { Button } from "antd";
+import React from "react"
+import { Button } from "antd"
 
-const UserView = props => {
+const UserView = (props) => {
   const goBack = () => {
-    props.history.goBack();
-  };
+    props.history.goBack()
+  }
 
   return (
     <div>
@@ -12,7 +12,7 @@ const UserView = props => {
       <p>Currently viewing user with id:{props.match.params.id}</p>
       <Button onClick={() => goBack()}>Go back</Button>
     </div>
-  );
-};
+  )
+}
 
-export default UserView;
+export default UserView

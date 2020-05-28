@@ -1,10 +1,10 @@
-import React from "react";
-import { Button } from "antd";
+import React from "react"
+import { Button } from "antd"
 
-const AreaView = props => {
+const AreaView = (props) => {
   const goBack = () => {
-    props.history.goBack();
-  };
+    props.history.goBack()
+  }
 
   return (
     <div>
@@ -12,7 +12,7 @@ const AreaView = props => {
       <p>Currently in Area #{props.match.params.id}</p>
       <Button onClick={() => goBack()}>Go back</Button>
     </div>
-  );
-};
+  )
+}
 
-export default AreaView;
+export default AreaView

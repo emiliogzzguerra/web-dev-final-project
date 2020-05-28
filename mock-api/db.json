@@ -1,0 +1,60 @@
+{
+    "user": [
+        {
+            "user_id": 0,
+            "full_name": "Emilio",
+            "user_name": "emilio",
+            "user_type": 2,
+            "color": "#FFFFFF"
+        },
+        {
+            "user_id": 1,
+            "full_name": "Aglahir",
+            "user_name": "aglahir",
+            "user_type": 2,
+            "color": "#FFFFFF"
+        },
+        {
+            "user_id": 2,
+            "full_name": "Hermano de emilio",
+            "user_name": "hermanodeemilio",
+            "user_type": 1,
+            "color": "#FFFFFF"
+        },         
+        {
+            "user_id": 3,
+            "full_name": "Hermano de aglahir",
+            "user_name": "hermanodeaglahir",
+            "user_type": 1,
+            "color": "#FFFFFF"
+        },
+        {
+            "user_id": 4,
+            "full_name": "SuperAdmin",
+            "user_name": "superadmin",
+            "user_type": 4,
+            "color": "#FFFFFF"
+        }
+    ],
+    "tag": [
+        {
+         "tag_id": 0,
+         "tag_name": "Casa de Emilio"
+        },
+        {
+         "tag_id": 1,
+         "tag_name": "Desarrollo Web"
+        }
+    ],
+    "usertag": [
+        {
+            "user_id": 0,
+            "tag_id": 0
+        },
+        {
+            "user_id": 0,
+            "tag_id": 0
+        }
+            
+    ]
+}

@@ -1,19 +1,19 @@
-import React from "react";
-import { Switch } from "react-router-dom";
+import React from "react"
+import { Switch } from "react-router-dom"
 
-import RouteWithProps from "../../components/routes/RouteWithProps";
-import routes from "../../routes";
+import RouteWithProps from "../../components/routes/RouteWithProps"
+import routes from "../../routes"
 
-import MainView from "./MainView";
-import SettingsView from "./SettingsView";
-import StatisticsView from "./StatisticsView";
-import AreasView from "./AreasView";
-import UsersView from "./UsersView";
-import AreaView from "./AreaView";
-import UserView from "./UserView";
+import MainView from "./MainView"
+import SettingsView from "./SettingsView"
+import StatisticsView from "./StatisticsView"
+import AreasView from "./AreasView"
+import UsersView from "./UsersView"
+import AreaView from "./AreaView"
+import UserView from "./UserView"
 
 const DashboardPage = () => {
-  const user = { name: "Hello world" };
+  const user = { name: "Hello world" }
   return (
     <Switch>
       <RouteWithProps exact path={routes.dashboard} component={MainView} />
@@ -29,7 +29,7 @@ const DashboardPage = () => {
         component={StatisticsView}
       />
     </Switch>
-  );
-};
+  )
+}
 
-export default DashboardPage;
+export default DashboardPage
