@@ -1,14 +1,14 @@
 import React from "react"
 import { useTranslation } from "react-i18next"
 
-const MainView = (props) => {
+const NotFoundView = (props) => {
   const { t } = useTranslation()
 
   return (
     <div>
-      <h1>{t("Title")}</h1>
+      <h1>{t("404 Page not found")}</h1>
     </div>
   )
 }
 
-export default MainView
+export default NotFoundView

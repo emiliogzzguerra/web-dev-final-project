@@ -5,9 +5,10 @@ import routes from "../../../routes"
 import CreateUserForm from "../../../components/entities/user/CreateUserForm"
 import FormModal from "../../../components/FormModal"
 import { useTranslation } from "react-i18next"
+import UsersTable from "../../../components/entities/user/UsersTable"
 
 const UsersView = (props) => {
-  const { t } = useTranslation("dashboard")
+  const { t } = useTranslation()
 
   const goToUser = () => {
     props.history.push(getPathWithParam(routes.user, "1234"))
@@ -15,14 +16,25 @@ const UsersView = (props) => {
 
   const formId = "create_user"
 
+  const users = [
+    {
+      user_id: 0,
+      full_name: "Emilio",
+      user_name: "emilio",
+      password: "12345",
+      user_type: 2,
+      color: "#FFFFFF",
+      areas: ["ITESM", "Desarrollo Web"],
+    },
+  ]
+
   return (
     <div>
-      <h2>Users View</h2>
-      <Button onClick={goToUser}>Go to user 1234</Button>
+      <h2>{t("Users View")}</h2>
       <FormModal
         forceRender
-        actionName={t("dashboard:user.boton_crear")}
-        submitText={t("dashboard:user.boton_crear")}
+        actionName={t("Create user")}
+        submitText={t("Create user")}
         handleCreate={(cb) => {
           cb(false)
         }}
@@ -36,6 +48,7 @@ const UsersView = (props) => {
           }}
         />
       </FormModal>
+      <UsersTable users={users} />
     </div>
   )
 }

@@ -1,0 +1,19 @@
+{
+  "translation": {
+    "Fullname": "Nombre completo",
+    "Username": "Nombre de usuario",
+    "User Type": "Tipo de usuario",
+    "Areas": "Areas",
+    "Color": "Color",
+    "Action": "Acción",
+    "Edit": "Editar",
+    "Delete": "Eliminar",
+    "Create user": "Crear usuario",
+    "Dashboard": "Tablero",
+    "Settings": "Configuraciones",
+    "Logout": "Cerrar sesión",
+    "Users": "Los usuarios",
+    "404 Page not found": "404 Pagina no encontrada",
+    "Users View": "Vista de usuarios"
+  }
+}

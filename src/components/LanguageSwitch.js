@@ -10,7 +10,7 @@ const StyledSwitch = styled(Switch)`
 `
 
 export default function LanguageSwitch() {
-  const [language, setLanguage] = useState("es")
+  const [language, setLanguage] = useState("en")
   const { i18n } = useTranslation()
 
   useEffect(() => {
@@ -27,8 +27,8 @@ export default function LanguageSwitch() {
 
   return (
     <StyledSwitch
-      checkedChildren="ES"
-      unCheckedChildren="EN"
+      checkedChildren="EN"
+      unCheckedChildren="ES"
       onChange={handleChange}
       defaultChecked
     />

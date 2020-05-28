@@ -1,5 +1,5 @@
 import React from "react"
-import { Switch } from "react-router-dom"
+import { Switch, Route } from "react-router-dom"
 
 import RouteWithProps from "../../components/routes/RouteWithProps"
 import routes from "../../routes"
@@ -10,6 +10,7 @@ import AreasView from "./Area/AreasView"
 import AreaView from "./Area/AreaView"
 import UsersView from "./User/UsersView"
 import UserView from "./User/UserView"
+import NotFoundView from "./NotFoundView"
 
 const DashboardPage = () => {
   const user = { name: "Hello world" }
@@ -21,6 +22,7 @@ const DashboardPage = () => {
       <RouteWithProps exact path={routes.user} component={UserView} />
       <RouteWithProps exact path={routes.users} component={UsersView} />
       <RouteWithProps exact path={routes.settings} component={SettingsView} />
+      <Route component={NotFoundView} />
     </Switch>
   )
 }

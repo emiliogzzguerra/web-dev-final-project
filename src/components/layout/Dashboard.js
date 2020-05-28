@@ -58,25 +58,25 @@ class DashboardLayout extends Component {
     const DashboardViews = [
       {
         key: "dash-menu-dashboard",
-        name: this.props.t('dashboard'),
+        name: this.props.t('Dashboard'),
         icon: <AreaChartOutlined />,
         route: routes.dashboard,
       },
       {
         key: "dash-menu-users",
-        name: this.props.t('users'),
+        name: this.props.t('Users'),
         icon: <TeamOutlined />,
         route: routes.users,
       },
       {
         key: "dash-menu-areas",
-        name: this.props.t('areas'),
+        name: this.props.t('Areas'),
         icon: <BlockOutlined />,
         route: routes.areas,
       },
       {
         key: "dash-menu-settings",
-        name: this.props.t('settings'),
+        name: this.props.t('Settings'),
         icon: <SettingOutlined />,
         route: routes.settings,
       },
@@ -91,7 +91,7 @@ class DashboardLayout extends Component {
           {DashboardViews.map(view => (
             <Menu.Item key={view.key} onClick={() => this.goTo(view.route)} icon={view.icon}>{view.name}</Menu.Item>
           ))}
-          <Menu.Item key="dash-menu-logout" onClick={() => this.onLogout()} icon={<LogoutOutlined />}>{this.props.t('logout')}</Menu.Item>
+          <Menu.Item key="dash-menu-logout" onClick={() => this.onLogout()} icon={<LogoutOutlined />}>{this.props.t('Logout')}</Menu.Item>
         </StyledMenu>
         <StyledContent>
           <LanguageSwitch />
@@ -102,4 +102,4 @@ class DashboardLayout extends Component {
   }
 }
 
-export default withTranslation('dashboard')(DashboardLayout);
+export default withTranslation()(DashboardLayout);
