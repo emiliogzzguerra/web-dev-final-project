@@ -9,19 +9,17 @@ import { withTranslation } from 'react-i18next';
 const { Content } = Layout;
 
 const StyledMenu = styled(Menu)`
-  height: 100vh;
+  height: 100%;
   width: 256px;
-
-  &:last-child {
-    background-color: red;
-  }
 `;
 
 const StyledLayout = styled(Layout)`
+  min-height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
 `;
 
 const StyledContent = styled(Content)`
@@ -30,8 +28,8 @@ const StyledContent = styled(Content)`
   justify-content: flex-start;
   align-content: flex-start;
   width: 100%;
-  height: 100vh;
-  padding: 50px;
+  height: 100%;
+  padding: 30px;
 `;
 
 class DashboardLayout extends Component {

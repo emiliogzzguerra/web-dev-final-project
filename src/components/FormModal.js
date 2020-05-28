@@ -4,29 +4,32 @@ import { Modal, Button } from "antd"
 export default function FormModal({
   actionName,
   children,
-  onOk,
   formId,
   submitText,
+  handleSubmit,
+  visibility,
+  setVisibility,
   ...rest
 }) {
-  const [visibility, setVisibility] = useState(false)
-
   return (
     <>
       <Modal
         {...rest}
         visible={visibility}
-        onOk={() => {
-          onOk(setVisibility)
-        }}
         onCancel={() => setVisibility(false)}
         footer={[
-          <>
+          <div key={`${formId}-modal-action-buttons`}>
             <Button onClick={() => setVisibility(false)}>Cancel</Button>
-            <Button type="primary" form={formId} key="submit" htmlType="submit">
+            <Button
+              type="primary"
+              form={formId}
+              key="submit"
+              htmlType="submit"
+              // onClick={() => setVisibility(false)}
+            >
               {submitText}
             </Button>
-          </>,
+          </div>,
         ]}
       >
         <div style={{ paddingRight: "30px", paddingTop: "10px" }}>{children}</div>

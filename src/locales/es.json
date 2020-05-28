@@ -14,6 +14,10 @@
     "Logout": "Cerrar sesión",
     "Users": "Los usuarios",
     "404 Page not found": "404 Pagina no encontrada",
-    "Users View": "Vista de usuarios"
+    "Users View": "Vista de usuarios",
+    "Name": "Nombre",
+    "Email": "Correo electrónico",
+    "Password": "Contraseña",
+    "Edit user": "Editar usuario"
   }
 }

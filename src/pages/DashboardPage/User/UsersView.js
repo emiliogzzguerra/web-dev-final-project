@@ -1,32 +1,62 @@
-import React, { useEffect } from "react"
-import { Button, Form } from "antd"
-import { getPathWithParam } from "../../../utils"
-import routes from "../../../routes"
+import React, { useState, useEffect } from "react"
+import { Spin, Alert } from "antd"
 import CreateUserForm from "../../../components/entities/user/CreateUserForm"
 import FormModal from "../../../components/FormModal"
 import { useTranslation } from "react-i18next"
 import UsersTable from "../../../components/entities/user/UsersTable"
+import styled from "@emotion/styled"
+
+// Redux Actions
+import {
+  createUserAction,
+  setVisibilityOfCreateUserModal,
+  fetchUsersAction,
+} from "../../../actions/usersActions"
+import { useDispatch, useSelector } from "react-redux"
+
+const UsersTableContainer = styled.div`
+  height: 200px;
+`
 
 const UsersView = (props) => {
   const { t } = useTranslation()
+  const dispatch = useDispatch()
+  const [initialValues, setInitialValues] = useState(null)
 
-  const goToUser = () => {
-    props.history.push(getPathWithParam(routes.user, "1234"))
+  useEffect(() => {
+    const fetchUsers = () => dispatch(fetchUsersAction())
+    fetchUsers()
+  }, [])
+
+  const createUser = (user) => dispatch(createUserAction(user))
+
+  const setVisibility = (visibility) => {
+    dispatch(setVisibilityOfCreateUserModal(visibility))
   }
 
-  const formId = "create_user"
+  const handleSubmit = (user) => {
+    createUser(user)
+  }
 
-  const users = [
-    {
-      user_id: 0,
-      full_name: "Emilio",
-      user_name: "emilio",
-      password: "12345",
-      user_type: 2,
-      color: "#FFFFFF",
-      areas: ["ITESM", "Desarrollo Web"],
-    },
-  ]
+  // Acceder al state del store
+  const cargando = useSelector((state) => state.user.loading)
+  const error = useSelector((state) => state.user.error)
+  const modalVisibility = useSelector((state) => state.user.modalVisibility)
+  const users = useSelector((state) => state.user.users)
+
+  useEffect(() => {
+    if (initialValues) {
+      setVisibility(true)
+    }
+  }, [initialValues])
+
+  useEffect(() => {
+    if (modalVisibility === false) {
+      setInitialValues(null)
+    }
+  }, [modalVisibility])
+
+  const formId = "create_user"
 
   return (
     <div>
@@ -35,20 +65,26 @@ const UsersView = (props) => {
         forceRender
         actionName={t("Create user")}
         submitText={t("Create user")}
-        handleCreate={(cb) => {
-          cb(false)
-        }}
+        visibility={modalVisibility}
+        setVisibility={setVisibility}
         formId={formId}
       >
+        {cargando && <Spin size="large" />}
+        {error && <Alert type="error" message="Error!" />}
         <CreateUserForm
           id={formId}
-          onFinish={(data) => {
-            debugger
-            console.log("finished")
-          }}
+          onFinish={handleSubmit}
+          initialValues={initialValues}
         />
       </FormModal>
-      <UsersTable users={users} />
+      <UsersTableContainer>
+        <UsersTable
+          users={users}
+          editAction={(user) => {
+            setInitialValues(user)
+          }}
+        />
+      </UsersTableContainer>
     </div>
   )
 }

@@ -3,8 +3,13 @@ import React from "react"
 import { Table, Space, Tag } from "antd"
 import { useTranslation } from "react-i18next"
 import { Link } from "react-router-dom"
+import styled from "@emotion/styled"
 
-const UsersTable = ({ users }) => {
+const StyledTable = styled(Table)`
+  max-height: 100vh;
+`
+
+const UsersTable = ({ users, editAction }) => {
   const { t } = useTranslation("user")
 
   const columns = [
@@ -30,13 +35,14 @@ const UsersTable = ({ users }) => {
       title: t("Areas"),
       key: "areas",
       dataIndex: "areas",
-      render: (areas) => (
+      render: (areas, record) => (
         <>
-          {areas.map((area) => (
-            <Tag color="geekblue" key={area}>
-              {area.toUpperCase()}
-            </Tag>
-          ))}
+          {areas &&
+            areas.map((area) => (
+              <Tag color="geekblue" key={`${record.id}-${area}`}>
+                {area.toUpperCase()}
+              </Tag>
+            ))}
         </>
       ),
     },
@@ -48,11 +54,11 @@ const UsersTable = ({ users }) => {
     {
       title: t("Action"),
       key: "action",
-      render: (text, record) => (
+      render: (_, record) => (
         <Space size="middle">
           <a
             onClick={() => {
-              console.log(`Editando usuario... ${record}`)
+              editAction(record)
             }}
           >
             {t("Edit")}
@@ -69,7 +75,14 @@ const UsersTable = ({ users }) => {
     },
   ]
 
-  return <Table columns={columns} dataSource={users} />
+  return (
+    <StyledTable
+      pagination={{ pageSize: 5 }}
+      columns={columns}
+      dataSource={users}
+      rowKey="id"
+    />
+  )
 }
 
 export default UsersTable

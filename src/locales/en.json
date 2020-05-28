@@ -14,6 +14,10 @@
     "Logout": "Logout",
     "Users": "Users",
     "404 Page not found": "404 Page not found",
-    "Users View": "Users View"
+    "Users View": "Users View",
+    "Name": "Name",
+    "Email": "Email",
+    "Password": "Password",
+    "Edit user": "Edit user"
   }
 }

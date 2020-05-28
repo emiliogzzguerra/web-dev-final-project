@@ -18,7 +18,6 @@ const LoginPage = (props) => {
 
   // Cuando el usuario quiere iniciar sesión
   const onFinish = (data) => {
-    debugger
     mostrarAlerta("hello")
 
     // Validar que no haya campos vacios

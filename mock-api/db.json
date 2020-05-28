@@ -1,70 +1,126 @@
 {
-    "user": [
-        {
-            "user_id": 0,
-            "full_name": "Emilio",
-            "user_name": "emilio",
-            "password": "12345",
-            "user_type": 2,
-            "color": "#FFFFFF",
-            "areas": ["ITESM", "Desarrollo Web"]
-        },
-        {
-            "user_id": 1,
-            "full_name": "Aglahir",
-            "user_name": "aglahir",
-            "password": "12345",
-            "user_type": 2,
-            "color": "#FFFFFF",
-            "areas": ["ITESM", "Desarrollo Web"]
-        },
-        {
-            "user_id": 2,
-            "full_name": "Hermano de emilio",
-            "user_name": "hermanodeemilio",
-            "password": "12345",
-            "user_type": 1,
-            "color": "#FFFFFF",
-            "areas": ["ITESM", "Desarrollo Web"]
-        },         
-        {
-            "user_id": 3,
-            "full_name": "Hermano de aglahir",
-            "user_name": "hermanodeaglahir",
-            "password": "12345",
-            "user_type": 1,
-            "color": "#FFFFFF",
-            "areas": ["ITESM", "Desarrollo Web"]
-        },
-        {
-            "user_id": 4,
-            "full_name": "SuperAdmin",
-            "user_name": "superadmin",
-            "password": "12345",
-            "user_type": 4,
-            "color": "#FFFFFF",
-            "areas": ["ITESM", "Desarrollo Web"]
-        }
-    ],
-    "tag": [
-        {
-         "tag_id": 0,
-         "tag_name": "Casa de Emilio"
-        },
-        {
-         "tag_id": 1,
-         "tag_name": "Desarrollo Web"
-        }
-    ],
-    "usertag": [
-        {
-            "user_id": 0,
-            "tag_id": 0
-        },
-        {
-            "user_id": 0,
-            "tag_id": 0
-        }
-            
-    ]
+  "user": [
+    {
+      "id": 0,
+      "full_name": "Emilio",
+      "user_name": "emilio",
+      "password": "12345",
+      "user_type": 2,
+      "color": "#FFFFFF",
+      "areas": [
+        "ITESM",
+        "Desarrollo Web"
+      ]
+    },
+    {
+      "id": 1,
+      "full_name": "Aglahir",
+      "user_name": "aglahir",
+      "password": "12345",
+      "user_type": 2,
+      "color": "#FFFFFF",
+      "areas": [
+        "ITESM",
+        "Desarrollo Web"
+      ]
+    },
+    {
+      "id": 2,
+      "full_name": "Hermano de emilio",
+      "user_name": "hermanodeemilio",
+      "password": "12345",
+      "user_type": 1,
+      "color": "#FFFFFF",
+      "areas": [
+        "ITESM",
+        "Desarrollo Web"
+      ]
+    },
+    {
+      "id": 3,
+      "full_name": "Hermano de aglahir",
+      "user_name": "hermanodeaglahir",
+      "password": "12345",
+      "user_type": 1,
+      "color": "#FFFFFF",
+      "areas": [
+        "ITESM",
+        "Desarrollo Web"
+      ]
+    },
+    {
+      "id": 4,
+      "full_name": "SuperAdmin",
+      "user_name": "superadmin",
+      "password": "12345",
+      "user_type": 4,
+      "color": "#FFFFFF",
+      "areas": [
+        "ITESM",
+        "Desarrollo Web"
+      ]
+    },
+    {
+      "ejemplo": "ejemplo",
+      "id": 5
+    },
+    {
+      "example": "dimeloooou",
+      "id": 6
+    },
+    {
+      "example": "asdfasdf",
+      "id": 7
+    },
+    {
+      "example": "asdfasdf",
+      "id": 8
+    },
+    {
+      "example": "asdfasdf",
+      "id": 9
+    },
+    {
+      "example": "asdfasdf",
+      "id": 10
+    },
+    {
+      "example": "asdfasdf",
+      "id": 11
+    },
+    {
+      "example": "ejemplo!!!",
+      "id": 12
+    },
+    {
+      "full_name": "Ajuaaa",
+      "email": "ejemplo",
+      "password": "123",
+      "areas": [
+        "Area2",
+        "Area3"
+      ],
+      "id": 13
+    }
+  ],
+  "tag": [
+    {
+      "tag_id": 0,
+      "tag_name": "Casa de Emilio"
+    },
+    {
+      "tag_id": 1,
+      "tag_name": "Desarrollo Web"
+    }
+  ],
+  "usertag": [
+    {
+      "id": 0,
+      "tag_id": 0
+    },
+    {
+      "id": 0,
+      "tag_id": 0
+    }
+  ]
 }
