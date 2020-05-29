@@ -1,6 +1,6 @@
 {
   "translation": {
-    "Fullname": "Fullname",
+    "Fullname": "Full name",
     "Username": "Username",
     "User Type": "User Type",
     "Areas": "Areas",
@@ -21,6 +21,20 @@
     "Edit user": "Edit user",
     "Success": "Success",
     "The user was created": "The user was created",
-    "The user has been deleted": "The user has been deleted"
+    "The user has been deleted": "The user has been deleted",
+    "Simple": "Simple",
+    "Priviledged": "Privileged",
+    "Administrator": "Administrator",
+    "Cancel": "Cancel",
+    "": "translation.",
+    "Super Administrator": "Super Administrator",
+    "User type": "User type",
+    "Full name required": "Full name required",
+    "Username required": "Username required",
+    "User type required": "User type required",
+    "Password required": "Password required",
+    "Update user": "Update user",
+    "The user has been updated": "The user has been updated",
+    "Areas view": "Areas view"
   }
 }

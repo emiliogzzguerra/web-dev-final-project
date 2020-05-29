@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from "react"
 import { Modal, Button } from "antd"
+import { useTranslation } from "react-i18next"
 
 export default function FormModal({
   actionName,
@@ -11,22 +12,18 @@ export default function FormModal({
   setVisibility,
   ...rest
 }) {
+  const { t } = useTranslation()
   return (
     <>
       <Modal
         {...rest}
         visible={visibility}
+        maskClosable={false}
         onCancel={() => setVisibility(false)}
         footer={[
           <div key={`${formId}-modal-action-buttons`}>
-            <Button onClick={() => setVisibility(false)}>Cancel</Button>
-            <Button
-              type="primary"
-              form={formId}
-              key="submit"
-              htmlType="submit"
-              // onClick={() => setVisibility(false)}
-            >
+            <Button onClick={() => setVisibility(false)}>{t("Cancel")}</Button>
+            <Button type="primary" form={formId} key="submit" htmlType="submit">
               {submitText}
             </Button>
           </div>,

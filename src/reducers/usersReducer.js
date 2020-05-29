@@ -15,16 +15,18 @@ export default function (state = initialState, action) {
         ...state,
         modalVisibility: action.payload,
       }
-    case reduxUtils.getStartTypeOf(userTypes.USER_FETCH):
-    case reduxUtils.getStartTypeOf(userTypes.USER_DELETE):
     case reduxUtils.getStartTypeOf(userTypes.USER_CREATE):
+    case reduxUtils.getStartTypeOf(userTypes.USER_FETCH):
+    case reduxUtils.getStartTypeOf(userTypes.USER_UPDATE):
+    case reduxUtils.getStartTypeOf(userTypes.USER_DELETE):
       return {
         ...state,
         loading: action.payload,
       }
+    case reduxUtils.getFailureTypeOf(userTypes.USER_CREATE):
+    case reduxUtils.getFailureTypeOf(userTypes.USER_UPDATE):
     case reduxUtils.getFailureTypeOf(userTypes.USER_FETCH):
     case reduxUtils.getFailureTypeOf(userTypes.USER_DELETE):
-    case reduxUtils.getFailureTypeOf(userTypes.USER_CREATE):
       return {
         ...state,
         loading: false,
@@ -42,6 +44,12 @@ export default function (state = initialState, action) {
         ...state,
         loading: false,
         users: action.payload,
+      }
+    case reduxUtils.getSuccessTypeOf(userTypes.USER_UPDATE):
+      return {
+        ...state,
+        loading: false,
+        users: [...state.users],
       }
     case reduxUtils.getSuccessTypeOf(userTypes.USER_DELETE):
       return {

@@ -21,6 +21,20 @@
     "Edit user": "Editar usuario",
     "Success": "Éxito",
     "The user was created": "El usuario fue creado",
-    "The user has been deleted": "El usuario ha sido eliminado"
+    "The user has been deleted": "El usuario ha sido eliminado",
+    "Simple": "Simple",
+    "Priviledged": "Privilegiado",
+    "Administrator": "Administrador",
+    "Cancel": "Cancelar",
+    "": "Traducción.",
+    "Super Administrator": "Super administrador",
+    "User type": "Tipo de usuario",
+    "Full name required": "Nombre completo requerido",
+    "Username required": "Nombre de usuario (requerido",
+    "User type required": "Tipo de usuario requerido",
+    "Password required": "Se requiere contraseña",
+    "Update user": "Actualizar usuario",
+    "The user has been updated": "El usuario ha sido actualizado",
+    "Areas view": "Vista de áreas"
   }
 }

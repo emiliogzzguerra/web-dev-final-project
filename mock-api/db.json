@@ -3,11 +3,11 @@
     {
       "id": 0,
       "full_name": "Emilio",
-      "user_name": "emilio",
+      "user_name": "dimelooou",
       "password": "12345",
-      "user_type": 2,
+      "user_type": 1,
       "color": "#FFFFFF",
-      "areas": [
+      "tags": [
         "ITESM",
         "Desarrollo Web"
       ]
@@ -17,9 +17,9 @@
       "full_name": "Aglahir",
       "user_name": "aglahir",
       "password": "12345",
-      "user_type": 2,
+      "user_type": 1,
       "color": "#FFFFFF",
-      "areas": [
+      "tags": [
         "ITESM",
         "Desarrollo Web"
       ]
@@ -31,19 +31,7 @@
       "password": "12345",
       "user_type": 1,
       "color": "#FFFFFF",
-      "areas": [
-        "ITESM",
-        "Desarrollo Web"
-      ]
-    },
-    {
-      "id": 4,
-      "full_name": "SuperAdmin",
-      "user_name": "superadmin",
-      "password": "12345",
-      "user_type": 4,
-      "color": "#FFFFFF",
-      "areas": [
+      "tags": [
         "ITESM",
         "Desarrollo Web"
       ]

@@ -12,6 +12,7 @@ import {
   setVisibilityOfCreateUserModal,
   fetchUsersAction,
   deleteUserAction,
+  updateUserAction,
 } from "../../../actions/usersActions"
 import { useDispatch, useSelector } from "react-redux"
 
@@ -20,12 +21,14 @@ const UsersTableContainer = styled.div`
 `
 
 const UsersView = (props) => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const dispatch = useDispatch()
   const [initialValues, setInitialValues] = useState(null)
+  const [actionName, setActionName] = useState(t("Create user"))
 
   // Actions
   const createUser = (user) => dispatch(createUserAction(user))
+  const updateUser = (user) => dispatch(updateUserAction(user))
   const deleteUser = (user) => dispatch(deleteUserAction(user))
   const fetchUsers = () => dispatch(fetchUsersAction())
 
@@ -44,13 +47,15 @@ const UsersView = (props) => {
   useEffect(() => {
     if (initialValues) {
       setVisibility(true)
+      setActionName(t("Update user"))
     }
   }, [initialValues])
 
-  // Whenever we close the modal form, reset the initialValues
+  // Whenever we close the modal form, reset the initialValues and fetch the users again
   useEffect(() => {
     if (modalVisibility === false) {
       setInitialValues(null)
+      setActionName(t("Create user"))
     }
   }, [modalVisibility])
 
@@ -59,9 +64,21 @@ const UsersView = (props) => {
     dispatch(setVisibilityOfCreateUserModal(visibility))
   }
 
-  const onFinish = (user) => {
-    createUser(user)
-  }
+  const onFinish = (user) =>
+    new Promise((resolve, reject) => {
+      if (initialValues) {
+        const userWithId = { ...user, id: initialValues.id }
+        updateUser(userWithId)
+      } else {
+        createUser(user)
+      }
+      resolve()
+    }).then(() => {
+      if (initialValues) {
+        setVisibility(false)
+      }
+      fetchUsers()
+    })
 
   const formId = "create_user"
 
@@ -71,7 +88,7 @@ const UsersView = (props) => {
       <FormModal
         forceRender
         actionName={t("Create user")}
-        submitText={t("Create user")}
+        submitText={actionName}
         visibility={modalVisibility}
         setVisibility={setVisibility}
         formId={formId}
@@ -90,10 +107,14 @@ const UsersView = (props) => {
           editAction={(user) => {
             setInitialValues(user)
           }}
-          deleteAction={(user) => {
-            deleteUser(user)
-            fetchUsers()
-          }}
+          deleteAction={(user) =>
+            new Promise((resolve, reject) => {
+              deleteUser(user)
+              resolve()
+            }).then(() => {
+              fetchUsers()
+            })
+          }
         />
       </UsersTableContainer>
     </div>

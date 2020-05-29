@@ -44,6 +44,18 @@ export function fetchUsersAction() {
 }
 
 // Update
+export function updateUserAction(user) {
+  return async (dispatch) => {
+    dispatch(reduxUtils.getStartPayloadOf(userTypes.USER_UPDATE))
+    try {
+      const response = await axiosClient.patch(`/user/${user.id}`, user)
+      dispatch(reduxUtils.getSuccessPayloadOf(userTypes.USER_UPDATE, response.data))
+      Swal.fire(i18n.t("Success"), i18n.t("The user has been updated"), "success")
+    } catch (error) {
+      dispatch(reduxUtils.getFailurePayloadOf(userTypes.USER_UPDATE, true))
+    }
+  }
+}
 
 // Delete
 export function deleteUserAction(user) {
