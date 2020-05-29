@@ -11,7 +11,6 @@ const StyledTable = styled(Table)`
 `
 
 const UsersTable = ({ users, editAction, deleteAction }) => {
-  // debugger
   const { t, i18n } = useTranslation()
   const getColumns = () => {
     return [

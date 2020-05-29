@@ -37,6 +37,13 @@
     "The user has been updated": "El usuario ha sido actualizado",
     "Areas view": "Vista de áreas",
     "Color required": "Color requerido",
-    "Wrong color format": "Formato de color incorrecto"
+    "Wrong color format": "Formato de color incorrecto",
+    "Edit area": "Área de edición",
+    "View area": "Ver área",
+    "Crear area": "Crear área",
+    "Create area": "Crear área",
+    "Area name": "Nombre del área",
+    "Area name required": "Nombre del área requerido",
+    "Update area": "Área de actualización"
   }
 }

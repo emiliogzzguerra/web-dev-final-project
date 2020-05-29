@@ -32,7 +32,6 @@ export default function CreateUserForm({ onFinish, initialValues = null, ...rest
       tag_id: "5ed01c9e29bbc45bbc8c7272",
       id: "5ed01c9e29bbc45bbc8c7272",
     },
-    ,
   ]
 
   const [form] = Form.useForm()

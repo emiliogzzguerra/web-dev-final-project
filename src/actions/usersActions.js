@@ -50,7 +50,8 @@ export function updateUserAction(user) {
     try {
       debugger
       const response = await axiosClient.patch("/users", {
-        data: { ...user, user_id: user.id },
+        ...user,
+        user_id: user.id,
       })
       dispatch(reduxUtils.getSuccessPayloadOf(userTypes.USER_UPDATE, response.data))
       Swal.fire(i18n.t("Success"), i18n.t("The user has been updated"), "success")

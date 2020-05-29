@@ -10,6 +10,8 @@ export default function FormModal({
   handleSubmit,
   visibility,
   setVisibility,
+  hideButton = false,
+  footer,
   ...rest
 }) {
   const { t } = useTranslation()
@@ -20,20 +22,15 @@ export default function FormModal({
         visible={visibility}
         maskClosable={false}
         onCancel={() => setVisibility(false)}
-        footer={[
-          <div key={`${formId}-modal-action-buttons`}>
-            <Button onClick={() => setVisibility(false)}>{t("Cancel")}</Button>
-            <Button type="primary" form={formId} key="submit" htmlType="submit">
-              {submitText}
-            </Button>
-          </div>,
-        ]}
+        footer={footer}
       >
         <div style={{ paddingRight: "30px", paddingTop: "10px" }}>{children}</div>
       </Modal>
-      <Button type="primary" onClick={() => setVisibility(true)}>
-        {actionName}
-      </Button>
+      {!hideButton && (
+        <Button type="primary" onClick={() => setVisibility(true)}>
+          {actionName}
+        </Button>
+      )}
     </>
   )
 }

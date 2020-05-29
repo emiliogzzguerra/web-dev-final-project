@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { Spin, Alert } from "antd"
+import { Spin, Alert, Button } from "antd"
 import CreateUserForm from "../../../components/entities/user/CreateUserForm"
 import FormModal from "../../../components/FormModal"
 import { useTranslation } from "react-i18next"
@@ -92,6 +92,14 @@ const UsersView = (props) => {
         visibility={modalVisibility}
         setVisibility={setVisibility}
         formId={formId}
+        footer={[
+          <div key={`${formId}-modal-action-buttons`}>
+            <Button onClick={() => setVisibility(false)}>{t("Cancel")}</Button>
+            <Button type="primary" form={formId} key="submit" htmlType="submit">
+              {actionName}
+            </Button>
+          </div>,
+        ]}
       >
         {cargando && <Spin size="large" />}
         {error && <Alert type="error" message="Error!" />}
