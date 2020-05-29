@@ -35,6 +35,8 @@
     "Password required": "Password required",
     "Update user": "Update user",
     "The user has been updated": "The user has been updated",
-    "Areas view": "Areas view"
+    "Areas view": "Areas view",
+    "Color required": "Color required",
+    "Wrong color format": "Wrong color format"
   }
 }

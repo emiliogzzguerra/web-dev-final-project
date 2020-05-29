@@ -35,6 +35,8 @@
     "Password required": "Se requiere contraseña",
     "Update user": "Actualizar usuario",
     "The user has been updated": "El usuario ha sido actualizado",
-    "Areas view": "Vista de áreas"
+    "Areas view": "Vista de áreas",
+    "Color required": "Color requerido",
+    "Wrong color format": "Formato de color incorrecto"
   }
 }

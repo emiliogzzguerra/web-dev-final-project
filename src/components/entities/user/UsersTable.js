@@ -11,6 +11,7 @@ const StyledTable = styled(Table)`
 `
 
 const UsersTable = ({ users, editAction, deleteAction }) => {
+  // debugger
   const { t, i18n } = useTranslation()
   const getColumns = () => {
     return [
@@ -41,8 +42,8 @@ const UsersTable = ({ users, editAction, deleteAction }) => {
           <>
             {tags &&
               tags.map((tag) => (
-                <Tag color="geekblue" key={`${record.id}-${tag}`}>
-                  {tag}
+                <Tag color="geekblue" key={`${record.id}-${tag.tag_id}`}>
+                  {tag.tag_name}
                 </Tag>
               ))}
           </>

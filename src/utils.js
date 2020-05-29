@@ -33,3 +33,7 @@ export const getUserTypeName = (userType) => {
       return "Unknown"
   }
 }
+
+export const getSimplifiedTags = (tags) => {
+  return tags.map((tag) => tag.id)
+}
