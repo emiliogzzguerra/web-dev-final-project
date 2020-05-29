@@ -6,6 +6,7 @@ import { Card, Input, Button, Form, Alert, Spin } from "antd"
 import { useTranslation } from "react-i18next"
 import { loginAction } from "../actions/authActions"
 import styled from "@emotion/styled"
+import LanguageSwitch from "../components/LanguageSwitch"
 
 const StyledSpinnerDiv = styled.div`
   display: flex;
@@ -29,6 +30,7 @@ const LoginPage = (props) => {
 
   return (
     <>
+      <LanguageSwitch />
       <Card
         bordered={false}
         style={{
@@ -72,6 +74,13 @@ const LoginPage = (props) => {
             <Button block size="large" htmlType="submit">
               {t("Login")}
             </Button>
+            <h3 style={{ marginTop: "15px" }}>Credenciales (cuenta y contraseña)</h3>
+            <ul>
+              <li>superuser:superuser</li>
+              <li>admin:admin</li>
+              <li>privilegeduser:privilegeduser</li>
+              <li>simpleuser:simpleuser</li>
+            </ul>
           </Form>
         )}
       </Card>

@@ -21,7 +21,6 @@ const DashboardPage = () => {
       <RouteWithProps exact path={routes.area} component={AreaView} />
       <RouteWithProps exact path={routes.user} component={UserView} />
       <RouteWithProps exact path={routes.users} component={UsersView} />
-      <RouteWithProps exact path={routes.settings} component={SettingsView} />
       <Route component={NotFoundView} />
     </Switch>
   )

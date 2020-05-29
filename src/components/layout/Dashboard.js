@@ -72,12 +72,6 @@ class DashboardLayout extends Component {
         icon: <BlockOutlined />,
         route: routes.areas,
       },
-      {
-        key: "dash-menu-settings",
-        name: this.props.t('Settings'),
-        icon: <SettingOutlined />,
-        route: routes.settings,
-      },
     ]
     return (
       <StyledLayout>

@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const axiosClient = axios.create({
-  baseURL: process.env.REACT_APP_BACKEND_URL || "http://localhost:3001",
+  baseURL: "https://final-web-2020.herokuapp.com/api",
   headers: {
     sessiontoken: localStorage.getItem("token"),
   },
