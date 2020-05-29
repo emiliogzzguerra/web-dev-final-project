@@ -35,5 +35,5 @@ export const getUserTypeName = (userType) => {
 }
 
 export const getSimplifiedTags = (tags) => {
-  return tags.map((tag) => tag.id)
+  return tags.map((tag) => tag._id)
 }

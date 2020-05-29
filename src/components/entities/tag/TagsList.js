@@ -3,23 +3,37 @@ import { Button, Spin, Alert } from "antd"
 import { useTranslation } from "react-i18next"
 import FormModal from "../../FormModal"
 import { useDispatch, useSelector } from "react-redux"
-import { setVisibilityOfCreateUserModal } from "../../../actions/usersActions"
+import {
+  setVisibilityOfCreateTagModal,
+  updateTagAction,
+  deleteTagAction,
+} from "../../../actions/tagsActions"
 import CreateTagForm from "./CreateTagForm"
 import routes from "../../../routes"
 import { getPathWithParam } from "../../../utils"
 import { Link } from "react-router-dom"
+import { createTagAction, fetchTagsAction } from "../../../actions/tagsActions"
 
-export default function TagsList({ tags, history }) {
+export default function TagsList() {
   const { t } = useTranslation()
   const [actionName, setActionName] = useState(t("Create area"))
   const [initialValues, setInitialValues] = useState(null)
   const dispatch = useDispatch()
 
+  const createTag = (data) => dispatch(createTagAction(data))
+  const updateTag = (data) => dispatch(updateTagAction(data))
+  const deleteTag = (data) => dispatch(deleteTagAction(data))
+  const fetchTags = (data) => dispatch(fetchTagsAction())
+
   // Accessing store's state
-  const cargando = useSelector((state) => state.user.loading)
-  const error = useSelector((state) => state.user.error)
-  const modalVisibility = useSelector((state) => state.user.modalVisibility)
-  // const tags = useSelector((state) => state.user.users)
+  const loading = useSelector((state) => state.tags.loading)
+  const error = useSelector((state) => state.tags.error)
+  const modalVisibility = useSelector((state) => state.tags.modalVisibility)
+  const tags = useSelector((state) => state.tags.tags)
+
+  useEffect(() => {
+    fetchTags()
+  }, [])
 
   useEffect(() => {
     if (initialValues) {
@@ -28,19 +42,23 @@ export default function TagsList({ tags, history }) {
     }
   }, [initialValues])
 
-  const onFinish = (data) => {
-    console.log("finished", data)
+  const onFinish = (tag) => {
+    if (initialValues) {
+      const tagWithId = { ...tag, _id: initialValues._id }
+      updateTag(tagWithId)
+    } else {
+      createTag(tag)
+    }
   }
 
   // Functions
   const setVisibility = (visibility) => {
-    dispatch(setVisibilityOfCreateUserModal(visibility))
+    dispatch(setVisibilityOfCreateTagModal(visibility))
   }
 
   const handleClick = (tag, event) => {
-    console.log(tag)
     setVisibility(true)
-    setInitialValues({ tag_name: tag.tag_name })
+    setInitialValues(tag)
   }
 
   // Whenever we close the modal form, reset the initialValues and fetch the users again
@@ -70,13 +88,16 @@ export default function TagsList({ tags, history }) {
             >
               {t("Cancel")}
             </Button>
+            <Button type="primary" onClick={() => deleteTag(initialValues)} danger>
+              {t("Delete area")}
+            </Button>
             <Button type="primary" form={formId} key="submit" htmlType="submit">
               {actionName}
             </Button>
           </div>,
         ]}
       >
-        {cargando && <Spin size="large" />}
+        {loading && <Spin size="large" />}
         {error && <Alert type="error" message="Error!" />}
         <CreateTagForm
           id={formId}
@@ -85,10 +106,10 @@ export default function TagsList({ tags, history }) {
         />
       </FormModal>
       {tags.map((tag) => (
-        <div key={`tag-${tag.id}`}>
+        <div key={`tag-${tag._id}`}>
           <h2>{tag.tag_name}</h2>
           <Button onClick={handleClick.bind(this, tag)}>{t("Edit area")}</Button>
-          <Link to={getPathWithParam(routes.area, tag.id)}>
+          <Link to={getPathWithParam(routes.area, tag._id)}>
             <Button>{t("View area")}</Button>
           </Link>
         </div>

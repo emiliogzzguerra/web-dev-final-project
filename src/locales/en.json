@@ -44,6 +44,11 @@
     "Create area": "Create area",
     "Area name": "Area name",
     "Area name required": "Area name required",
-    "Update area": "Update area"
+    "Update area": "Update area",
+    "The tag was created": "The tag was created",
+    "The area was created": "The area was created",
+    "The area has been updated": "The area has been updated",
+    "The area has been deleted": "The area has been deleted",
+    "Delete area": "Delete area"
   }
 }

@@ -7,7 +7,7 @@ const { useForm } = Form
 
 export default function CreateTagForm({ onFinish, initialValues = null, ...rest }) {
   const { t } = useTranslation()
-  const modalVisibility = useSelector((state) => state.user.modalVisibility)
+  const modalVisibility = useSelector((state) => state.tags.modalVisibility)
 
   const [form] = Form.useForm()
 

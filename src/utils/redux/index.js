@@ -1,7 +1,7 @@
-const getStartPayloadOf = (typeBeginning) => {
+const getStartPayloadOf = (typeBeginning, payload = true) => {
   return {
     type: typeBeginning + "_START",
-    payload: true,
+    payload: payload,
   }
 }
 

@@ -33,15 +33,22 @@ const UsersView = (props) => {
   const fetchUsers = () => dispatch(fetchUsersAction())
 
   // Accessing store's state
-  const cargando = useSelector((state) => state.user.loading)
-  const error = useSelector((state) => state.user.error)
-  const modalVisibility = useSelector((state) => state.user.modalVisibility)
-  const users = useSelector((state) => state.user.users)
+  const loading = useSelector((state) => state.users.loading)
+  const error = useSelector((state) => state.users.error)
+  const modalVisibility = useSelector((state) => state.users.modalVisibility)
+  const users = useSelector((state) => state.users.users)
+  const refresh = useSelector((state) => state.users.readyForRefresh)
 
   // Fetch users as soon as we load the view
   useEffect(() => {
     fetchUsers()
   }, [])
+
+  useEffect(() => {
+    if (refresh === true) {
+      fetchUsers()
+    }
+  }, [refresh])
 
   // If initial values change, show the form modal (Editing a user)
   useEffect(() => {
@@ -64,21 +71,14 @@ const UsersView = (props) => {
     dispatch(setVisibilityOfCreateUserModal(visibility))
   }
 
-  const onFinish = (user) =>
-    new Promise((resolve, reject) => {
-      if (initialValues) {
-        const userWithId = { ...user, id: initialValues.id }
-        updateUser(userWithId)
-      } else {
-        createUser(user)
-      }
-      resolve()
-    }).then(() => {
-      if (initialValues) {
-        setVisibility(false)
-      }
-      fetchUsers()
-    })
+  const onFinish = (user) => {
+    if (initialValues) {
+      const userWithId = { ...user, _id: initialValues._id }
+      updateUser(userWithId)
+    } else {
+      createUser(user)
+    }
+  }
 
   const formId = "create_user"
 
@@ -101,7 +101,7 @@ const UsersView = (props) => {
           </div>,
         ]}
       >
-        {cargando && <Spin size="large" />}
+        {loading && <Spin size="large" />}
         {error && <Alert type="error" message="Error!" />}
         <CreateUserForm
           id={formId}
@@ -115,14 +115,7 @@ const UsersView = (props) => {
           editAction={(user) => {
             setInitialValues(user)
           }}
-          deleteAction={(user) =>
-            new Promise((resolve, reject) => {
-              deleteUser(user)
-              resolve()
-            }).then(() => {
-              fetchUsers()
-            })
-          }
+          deleteAction={(user) => deleteUser(user)}
         />
       </UsersTableContainer>
     </div>

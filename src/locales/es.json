@@ -44,6 +44,11 @@
     "Create area": "Crear área",
     "Area name": "Nombre del área",
     "Area name required": "Nombre del área requerido",
-    "Update area": "Área de actualización"
+    "Update area": "Área de actualización",
+    "The tag was created": "La etiqueta fue creada",
+    "The area was created": "El área fue creada",
+    "The area has been updated": "El área ha sido actualizada",
+    "The area has been deleted": "El área ha sido eliminada",
+    "Delete area": "Eliminar área"
   }
 }

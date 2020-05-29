@@ -37,14 +37,17 @@ const UsersTable = ({ users, editAction, deleteAction }) => {
         title: t("Areas"),
         key: "tags",
         dataIndex: "tags",
-        render: (tags, record) => (
+        render: (tags, user) => (
           <>
             {tags &&
-              tags.map((tag) => (
-                <Tag color="geekblue" key={`${record.id}-${tag.tag_id}`}>
-                  {tag.tag_name}
-                </Tag>
-              ))}
+              tags.map((tag) => {
+                const uniqueKey = `${user._id}-${tag._id}`
+                return (
+                  <Tag color="geekblue" key={uniqueKey}>
+                    {tag.tag_name}
+                  </Tag>
+                )
+              })}
           </>
         ),
       },

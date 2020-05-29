@@ -20,8 +20,8 @@ export function createUserAction(user) {
   return async (dispatch) => {
     dispatch(reduxUtils.getStartPayloadOf(userTypes.USER_CREATE))
     try {
-      await axiosClient.post("/users", user)
-      dispatch(reduxUtils.getSuccessPayloadOf(userTypes.USER_CREATE, user))
+      const response = await axiosClient.post("/users", user)
+      dispatch(reduxUtils.getSuccessPayloadOf(userTypes.USER_CREATE, response.data))
       Swal.fire(i18n.t("Success"), i18n.t("The user was created"), "success")
     } catch (error) {
       dispatch(reduxUtils.getFailurePayloadOf(userTypes.USER_CREATE, true))
@@ -46,14 +46,10 @@ export function fetchUsersAction() {
 // Update
 export function updateUserAction(user) {
   return async (dispatch) => {
-    dispatch(reduxUtils.getStartPayloadOf(userTypes.USER_UPDATE))
+    dispatch(reduxUtils.getStartPayloadOf(userTypes.USER_UPDATE, user._id))
     try {
-      debugger
-      const response = await axiosClient.patch("/users", {
-        ...user,
-        user_id: user.id,
-      })
-      dispatch(reduxUtils.getSuccessPayloadOf(userTypes.USER_UPDATE, response.data))
+      await axiosClient.patch("/users", user)
+      dispatch(reduxUtils.getSuccessPayloadOf(userTypes.USER_UPDATE, user))
       Swal.fire(i18n.t("Success"), i18n.t("The user has been updated"), "success")
     } catch (error) {
       dispatch(reduxUtils.getFailurePayloadOf(userTypes.USER_UPDATE, true))
@@ -64,12 +60,12 @@ export function updateUserAction(user) {
 // Delete
 export function deleteUserAction(user) {
   return async (dispatch) => {
-    dispatch(reduxUtils.getStartPayloadOf(userTypes.USER_DELETE))
+    dispatch(reduxUtils.getStartPayloadOf(userTypes.USER_DELETE, user._id))
     try {
       const response = await axiosClient.delete("/users", {
-        data: { user_id: user.id },
+        data: { _id: user._id },
       })
-      dispatch(reduxUtils.getSuccessPayloadOf(userTypes.USER_DELETE, response))
+      dispatch(reduxUtils.getSuccessPayloadOf(userTypes.USER_DELETE, user._id))
       Swal.fire(i18n.t("Success"), i18n.t("The user has been deleted"), "success")
     } catch (error) {
       dispatch(reduxUtils.getFailurePayloadOf(userTypes.USER_DELETE, true))

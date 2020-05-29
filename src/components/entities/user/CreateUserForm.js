@@ -4,35 +4,24 @@ import { useTranslation } from "react-i18next"
 import { getAvailableUserTypes, getSimplifiedTags } from "../../../utils"
 import { useSelector, useDispatch } from "react-redux"
 import { tagTypes } from "../../../types"
+import { fetchTagsAction } from "../../../actions/tagsActions"
 
 const { Option } = Select
 const { useForm } = Form
 
 export default function CreateUserForm({ onFinish, initialValues = null, ...rest }) {
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
   const { t } = useTranslation()
   const [userType, setUserType] = useState(1) // Initialized as "Simple" (1)
-  const [tags, setTags] = useState([])
-  const modalVisibility = useSelector((state) => state.user.modalVisibility)
+  const [selectedTags, setSelectedTags] = useState([])
+  const modalVisibility = useSelector((state) => state.users.modalVisibility)
 
-  // const getTags = dispatch()
+  const fetchTags = (data) => dispatch(fetchTagsAction())
+  const tags = useSelector((state) => state.tags.tags)
 
-  const availableTags = [
-    {
-      _id: "5ed0112dfbb5ec6350e65d7b",
-      tag_name: "tag2",
-      __v: 0,
-      tag_id: "5ed0112dfbb5ec6350e65d7b",
-      id: "5ed0112dfbb5ec6350e65d7b",
-    },
-    {
-      _id: "5ed01c9e29bbc45bbc8c7272",
-      tag_name: "tag1",
-      __v: 0,
-      tag_id: "5ed01c9e29bbc45bbc8c7272",
-      id: "5ed01c9e29bbc45bbc8c7272",
-    },
-  ]
+  useEffect(() => {
+    fetchTags()
+  }, [])
 
   const [form] = Form.useForm()
 
@@ -40,9 +29,9 @@ export default function CreateUserForm({ onFinish, initialValues = null, ...rest
     form.resetFields()
     if (initialValues !== null) {
       const simplifiedTags = getSimplifiedTags(initialValues.tags)
-      setTags(simplifiedTags)
+      setSelectedTags(simplifiedTags)
     } else {
-      setTags([])
+      setSelectedTags([])
     }
   }, [initialValues, modalVisibility])
 
@@ -53,7 +42,7 @@ export default function CreateUserForm({ onFinish, initialValues = null, ...rest
       form={form}
       initialValues={initialValues}
       onFinish={(values) => {
-        const newValues = { ...values, tags: tags, user_type: userType }
+        const newValues = { ...values, tags: selectedTags, user_type: userType }
         onFinish(newValues)
       }}
       {...rest}
@@ -101,14 +90,15 @@ export default function CreateUserForm({ onFinish, initialValues = null, ...rest
       <Form.Item label="Areas:">
         <Select
           mode="tags"
-          value={tags}
+          value={selectedTags}
           style={{ width: "100%" }}
           onChange={(selected) => {
-            setTags(selected)
+            debugger
+            setSelectedTags(selected)
           }}
         >
-          {availableTags.map((tag) => (
-            <Option key={tag.id}>{tag.tag_name}</Option>
+          {tags.map((tag) => (
+            <Option key={tag._id}>{tag.tag_name}</Option>
           ))}
         </Select>
       </Form.Item>
