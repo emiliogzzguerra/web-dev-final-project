@@ -63,7 +63,6 @@ export default function (state = initialState, action) {
         targetTag: null,
       }
     case reduxUtils.getSuccessTypeOf(tagTypes.TAG_DELETE):
-      debugger
       return {
         ...state,
         loading: false,

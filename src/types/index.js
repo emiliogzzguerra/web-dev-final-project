@@ -23,4 +23,9 @@ const tagTypes = {
   TAG_DELETE: "TAG_DELETE",
 }
 
-export { authTypes, alertTypes, tagTypes, userTypes }
+// Data
+const dataTypes = {
+  DATA_FETCH: "DATA_FETCH",
+}
+
+export { authTypes, alertTypes, tagTypes, userTypes, dataTypes }

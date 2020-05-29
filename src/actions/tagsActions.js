@@ -66,7 +66,6 @@ export function deleteTagAction(tag) {
       const response = await axiosClient.delete("/tags", {
         data: { _id: tag._id },
       })
-      debugger
       dispatch(reduxUtils.getSuccessPayloadOf(tagTypes.TAG_DELETE, tag._id))
       Swal.fire(i18n.t("Success"), i18n.t("The area has been deleted"), "success")
     } catch (error) {

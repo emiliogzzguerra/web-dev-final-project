@@ -93,7 +93,6 @@ export default function CreateUserForm({ onFinish, initialValues = null, ...rest
           value={selectedTags}
           style={{ width: "100%" }}
           onChange={(selected) => {
-            debugger
             setSelectedTags(selected)
           }}
         >
