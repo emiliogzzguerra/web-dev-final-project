@@ -29,7 +29,7 @@ class RadialLineGraph extends Component {
     series1.dataFields.valueY = "income"
     series1.dataFields.dateX = "date"
     series1.strokeWidth = 3
-    series1.stroke = am4core.color(this.props.color)
+    series1.stroke = am4core.color("black")
     series1.tooltipText = "{valueY}"
 
     series1.name = i18n.t("Income")
