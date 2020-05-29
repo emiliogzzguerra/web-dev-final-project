@@ -9,7 +9,7 @@ const StyledTable = styled(Table)`
   max-height: 100vh;
 `
 
-const UsersTable = ({ users, editAction }) => {
+const UsersTable = ({ users, editAction, deleteAction }) => {
   const { t } = useTranslation("user")
 
   const columns = [
@@ -65,7 +65,7 @@ const UsersTable = ({ users, editAction }) => {
           </a>
           <a
             onClick={() => {
-              console.log(`Borrando usuario... ${record}`)
+              deleteAction(record)
             }}
           >
             {t("Delete")}

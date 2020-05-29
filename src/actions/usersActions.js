@@ -2,9 +2,9 @@ import { userTypes } from "../types"
 import reduxUtils from "../utils/redux"
 import axiosClient from "../config/axios"
 import Swal from "sweetalert2"
+import i18n from "../i18n"
 
-// Logic to manage the create user modal and to create the user in the DB
-
+// Create
 export function setVisibilityOfCreateUserModal(visibility) {
   return (dispatch) => {
     dispatch(
@@ -22,7 +22,7 @@ export function createUserAction(user) {
     try {
       await axiosClient.post("/user", user)
       dispatch(reduxUtils.getSuccessPayloadOf(userTypes.USER_CREATE, user))
-      Swal.fire("Correcto", "El usuario fue creado", "success")
+      Swal.fire(i18n.t("Success"), i18n.t("The user was created"), "success")
     } catch (error) {
       dispatch(reduxUtils.getFailurePayloadOf(userTypes.USER_CREATE, true))
       throw error
@@ -30,8 +30,7 @@ export function createUserAction(user) {
   }
 }
 
-// Logic to fetch the users
-
+// Read
 export function fetchUsersAction() {
   return async (dispatch) => {
     dispatch(reduxUtils.getStartPayloadOf(userTypes.USER_FETCH))
@@ -39,7 +38,23 @@ export function fetchUsersAction() {
       const response = await axiosClient.get("/user")
       dispatch(reduxUtils.getSuccessPayloadOf(userTypes.USER_FETCH, response.data))
     } catch (error) {
-      dispatch(reduxUtils.getFailurePayloadOf(userTypes.USER_FETCH))
+      dispatch(reduxUtils.getFailurePayloadOf(userTypes.USER_FETCH, true))
+    }
+  }
+}
+
+// Update
+
+// Delete
+export function deleteUserAction(user) {
+  return async (dispatch) => {
+    dispatch(reduxUtils.getStartPayloadOf(userTypes.USER_DELETE))
+    try {
+      const response = await axiosClient.delete(`/user/${user.id}`)
+      dispatch(reduxUtils.getSuccessPayloadOf(userTypes.USER_DELETE, response))
+      Swal.fire(i18n.t("Success"), i18n.t("The user has been deleted"), "success")
+    } catch (error) {
+      dispatch(reduxUtils.getFailurePayloadOf(userTypes.USER_DELETE, true))
     }
   }
 }

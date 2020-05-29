@@ -18,6 +18,9 @@
     "Name": "Name",
     "Email": "Email",
     "Password": "Password",
-    "Edit user": "Edit user"
+    "Edit user": "Edit user",
+    "Success": "Success",
+    "The user was created": "The user was created",
+    "The user has been deleted": "The user has been deleted"
   }
 }

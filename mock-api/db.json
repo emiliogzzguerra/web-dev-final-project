@@ -25,18 +25,6 @@
       ]
     },
     {
-      "id": 2,
-      "full_name": "Hermano de emilio",
-      "user_name": "hermanodeemilio",
-      "password": "12345",
-      "user_type": 1,
-      "color": "#FFFFFF",
-      "areas": [
-        "ITESM",
-        "Desarrollo Web"
-      ]
-    },
-    {
       "id": 3,
       "full_name": "Hermano de aglahir",
       "user_name": "hermanodeaglahir",
@@ -59,48 +47,6 @@
         "ITESM",
         "Desarrollo Web"
       ]
-    },
-    {
-      "ejemplo": "ejemplo",
-      "id": 5
-    },
-    {
-      "example": "dimeloooou",
-      "id": 6
-    },
-    {
-      "example": "asdfasdf",
-      "id": 7
-    },
-    {
-      "example": "asdfasdf",
-      "id": 8
-    },
-    {
-      "example": "asdfasdf",
-      "id": 9
-    },
-    {
-      "example": "asdfasdf",
-      "id": 10
-    },
-    {
-      "example": "asdfasdf",
-      "id": 11
-    },
-    {
-      "example": "ejemplo!!!",
-      "id": 12
-    },
-    {
-      "full_name": "Ajuaaa",
-      "email": "ejemplo",
-      "password": "123",
-      "areas": [
-        "Area2",
-        "Area3"
-      ],
-      "id": 13
     }
   ],
   "tag": [

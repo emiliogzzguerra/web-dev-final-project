@@ -18,6 +18,9 @@
     "Name": "Nombre",
     "Email": "Correo electrónico",
     "Password": "Contraseña",
-    "Edit user": "Editar usuario"
+    "Edit user": "Editar usuario",
+    "Success": "Éxito",
+    "The user was created": "El usuario fue creado",
+    "The user has been deleted": "El usuario ha sido eliminado"
   }
 }
