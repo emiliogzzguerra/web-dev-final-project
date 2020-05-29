@@ -1,9 +1,6 @@
 const authTypes = {
   LOGIN: "LOGIN",
-  LOGIN_SUCCESS: "LOGIN_SUCCESS",
-  LOGIN_FAILURE: "LOGIN_FAILURE",
   LOGOUT: "LOGOUT",
-  GET_USER: "GET_USER",
 }
 
 const alertTypes = {
@@ -20,15 +17,10 @@ const userTypes = {
 
 // Tags
 const tagTypes = {
-  GET_TAGS_SUCCESS: "GET_TAGS_SUCCESS",
-  GET_TAGS_FAILURE: "GET_TAGS_FAILURE",
+  TAG_FETCH: "TAG_FETCH",
+  TAG_UPDATE: "TAG_UPDATE",
+  TAG_CREATE: "TAG_CREATE",
+  TAG_DELETE: "TAG_DELETE",
 }
 
-const userTagTypes = {
-  DELETE_USER_FROM_TAG_SUCCESS: "DELETE_USER_FROM_TAG_SUCCESS",
-  DELETE_USER_FROM_TAG_FAILURE: "DELETE_USER_FROM_TAG_FAILURE",
-  ADD_USER_TO_TAG_SUCCESS: "ADD_USER_TO_TAG_SUCCESS",
-  ADD_USER_TO_TAG_FAILURE: "ADD_USER_TO_TAG_FAILURE",
-}
-
-export { authTypes, alertTypes, tagTypes, userTagTypes, userTypes }
+export { authTypes, alertTypes, tagTypes, userTypes }

@@ -1,6 +1,6 @@
 import React from "react"
 import { Router, Route, Switch, Redirect } from "react-router-dom"
-import { createBrowserHistory } from "history"
+import history from "./utils/history"
 
 // Ant design
 import "./styles/index.css"
@@ -37,7 +37,6 @@ const pages = [
 ]
 
 const App = () => {
-  const history = createBrowserHistory()
   return (
     <Router history={history}>
       <Provider store={store}>

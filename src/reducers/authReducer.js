@@ -1,4 +1,5 @@
 import { authTypes } from "../types"
+import reduxUtils from "../utils/redux"
 
 const initialState = {
   token: localStorage.getItem("token"),
@@ -10,38 +11,23 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case authTypes.LOGIN:
+    case reduxUtils.getStartTypeOf(authTypes.LOGIN):
       return {
         ...state,
         loading: action.payload,
       }
-    case authTypes.LOGIN_SUCCESS:
-      localStorage.setItem("token", action.payload.token)
+    case reduxUtils.getSuccessTypeOf(authTypes.LOGIN):
+      localStorage.setItem("token", action.payload.sessiontoken)
       return {
         ...state,
         authenticated: true,
-        message: null,
         loading: false,
       }
-    case authTypes.GET_USER:
-      return {
-        ...state,
-        authenticated: true,
-        user: action.payload,
-        loading: false,
-      }
-    case authTypes.LOGOUT:
-    case authTypes.LOGIN_FAILURE:
+    case reduxUtils.getFailurePayloadOf(authTypes.LOGIN):
       localStorage.removeItem("token")
-      return {
-        ...state,
-        token: null,
-        user: null,
-        authenticated: null,
-        message: action.payload,
-        loading: false,
-      }
-
+      return initialState
+    case reduxUtils.getSuccessTypeOf(authTypes.LOGOUT):
+      return initialState
     default:
       return state
   }

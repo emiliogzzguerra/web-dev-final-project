@@ -56,5 +56,15 @@
       "id": 0,
       "tag_id": 0
     }
-  ]
+  ],
+  "auth": {
+    "sessiontoken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNWVjZmRjYWY3YjEwNDQ0OTE0NDIzMmJjIiwiaWF0IjoxNTkwNzI5MjY0LCJleHAiOjE1OTA4MTU2NjR9.OglQ26U3DhLWTX9ER1nSyYZ5XSyaW9mG8EWhmOX4qd8",
+    "user": {
+        "user_id": "5ecfdcaf7b104449144232bc",
+        "user_type": 3,
+        "full_name": "admin1",
+        "user_name": "admin1",
+        "color": "#FFFFFF"
+    }
+  }
 }
