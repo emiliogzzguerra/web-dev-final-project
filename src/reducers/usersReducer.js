@@ -73,6 +73,7 @@ export default function (state = initialState, action) {
         users: state.users.filter((user) => user._id !== state.targetUser),
         readyForRefresh: true,
       }
+
     default:
       return state
   }

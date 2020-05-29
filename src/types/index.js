@@ -1,4 +1,5 @@
 const authTypes = {
+  GET_USER: "GET_USER",
   LOGIN: "LOGIN",
   LOGOUT: "LOGOUT",
 }

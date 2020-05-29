@@ -11,24 +11,7 @@ const AreasView = (props) => {
   return (
     <div>
       <h2>{t("Areas view")}</h2>
-      <TagsList
-        tags={[
-          {
-            _id: "5ed0112dfbb5ec6350e65d7b",
-            tag_name: "tag2",
-            __v: 0,
-            tag_id: "5ed0112dfbb5ec6350e65d7b",
-            id: "5ed0112dfbb5ec6350e65d7b",
-          },
-          {
-            _id: "5ed01c9e29bbc45bbc8c7272",
-            tag_name: "tag1",
-            __v: 0,
-            tag_id: "5ed01c9e29bbc45bbc8c7272",
-            id: "5ed01c9e29bbc45bbc8c7272",
-          },
-        ]}
-      />
+      <TagsList />
     </div>
   )
 }

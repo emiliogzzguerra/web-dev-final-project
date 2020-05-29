@@ -49,6 +49,13 @@
     "The area was created": "El área fue creada",
     "The area has been updated": "El área ha sido actualizada",
     "The area has been deleted": "El área ha sido eliminada",
-    "Delete area": "Eliminar área"
+    "Delete area": "Eliminar área",
+    "\"Email required\"": "\"Correo electronico (requerido\"",
+    "exampleUsername": "ejemploUsuario",
+    "Infinite dashboard": "Tablero infinito",
+    "Login": "Iniciar sesión",
+    "Good afternoon,": "Buenas tardes,",
+    "Income": "Ingresos",
+    "Expense": "Gastos"
   }
 }

@@ -5,12 +5,13 @@ const initialState = {
   token: localStorage.getItem("token"),
   authenticated: null,
   user: null,
-  message: null,
+  error: null,
   loading: false,
 }
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case reduxUtils.getStartTypeOf(authTypes.GET_USER):
     case reduxUtils.getStartTypeOf(authTypes.LOGIN):
       return {
         ...state,
@@ -20,12 +21,29 @@ export default (state = initialState, action) => {
       localStorage.setItem("token", action.payload.sessiontoken)
       return {
         ...state,
+        user: action.payload.user,
         authenticated: true,
         loading: false,
       }
-    case reduxUtils.getFailurePayloadOf(authTypes.LOGIN):
+    case reduxUtils.getFailureTypeOf(authTypes.GET_USER):
+      return {
+        ...state,
+        error: action.payload.response,
+        loading: false,
+      }
+    case reduxUtils.getFailureTypeOf(authTypes.LOGIN):
       localStorage.removeItem("token")
-      return initialState
+      return {
+        ...state,
+        error: action.payload.response,
+        loading: false,
+      }
+    case reduxUtils.getSuccessTypeOf(authTypes.GET_USER):
+      return {
+        ...state,
+        user: action.payload,
+        loading: false,
+      }
     case reduxUtils.getSuccessTypeOf(authTypes.LOGOUT):
       return initialState
     default:

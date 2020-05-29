@@ -5,11 +5,18 @@ import Swal from "sweetalert2"
 import i18n from "../i18n"
 
 // Fetch
-export function fetchDataAction() {
+export function fetchDataAction(source = null, id = null) {
   return async (dispatch) => {
     dispatch(reduxUtils.getStartPayloadOf(dataTypes.DATA_FETCH))
     try {
-      const response = await axiosClient.get("/data")
+      let response
+      if (source === "tag") {
+        response = await axiosClient.get(`/data?tag_id=${id}`)
+      } else if (source === "user") {
+        response = await axiosClient.get(`/data?user_id=${id}`)
+      } else {
+        response = await axiosClient.get("/data")
+      }
       dispatch(reduxUtils.getSuccessPayloadOf(dataTypes.DATA_FETCH, response.data))
     } catch (error) {
       dispatch(reduxUtils.getFailurePayloadOf(dataTypes.DATA_FETCH, true))

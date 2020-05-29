@@ -13,9 +13,7 @@ export const loginAction = (datos) => {
       dispatch(reduxUtils.getSuccessPayloadOf(authTypes.LOGIN, respuesta.data))
       history.push("/dashboard")
     } catch (error) {
-      dispatch(
-        reduxUtils.getFailurePayloadOf(authTypes.LOGIN, "Error al hacer login")
-      )
+      dispatch(reduxUtils.getFailurePayloadOf(authTypes.LOGIN, error))
     }
   }
 }
@@ -25,5 +23,17 @@ export const logoutAction = (datos) => {
     localStorage.clear()
     dispatch(reduxUtils.getSuccessPayloadOf(authTypes.LOGOUT))
     this.props.history.push(routes.login)
+  }
+}
+
+export function getUserAction() {
+  return async (dispatch) => {
+    dispatch(reduxUtils.getStartPayloadOf(authTypes.GET_USER))
+    try {
+      const response = await axiosClient.get("/users/myinfo")
+      dispatch(reduxUtils.getSuccessPayloadOf(authTypes.GET_USER, response.data))
+    } catch (error) {
+      dispatch(reduxUtils.getFailurePayloadOf(authTypes.GET_USER, true))
+    }
   }
 }
