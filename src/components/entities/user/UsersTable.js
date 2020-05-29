@@ -18,9 +18,6 @@ const UsersTable = ({ users, editAction, deleteAction }) => {
         title: t("Fullname"),
         dataIndex: "full_name",
         key: "full_name",
-        render: (text, record) => {
-          return <Link to={`/dashboard/user/${record.user_id}`}>{text}</Link>
-        },
       },
       {
         title: t("Username"),
